@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+    <div class="nav">
+        <button onclick="location.href='index.html'">Home</button>
+        <button onclick="location.href='fitness-meme.html'">Fitness-Meme</button>
+        <button onclick="location.href='signup.html'">Signup</button>
+        <button onclick="location.href='motivate.html'">Motivational-quotes</button>
+    </div>
+
+    <div class="container">
+        <h1>Meme Generator</h1>
+        
+        <input type="file" id="imageInput">
+        <input type="text" id="topText" placeholder="Top text">
+        <input type="text" id="bottomText" placeholder="Bottom text">
+        <button onclick="generateMeme()">Generate Meme</button>
+        <canvas id="memeCanvas"></canvas>
+        <button id="downloadBtn">Download Meme</button>
+    </div>
+   
+
+    <script src="/public/js/meme.js"></script>
+</body>
+</html>
