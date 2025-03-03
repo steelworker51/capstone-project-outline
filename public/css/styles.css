@@ -154,3 +154,49 @@ h4 {
     padding-top: 15px;
     width: 100%;
 }
+
+/* Meme Generator Container */
+.container {
+    background: white;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+input {
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Meme Canvas */
+canvas {
+    border: 2px solid black;
+    max-width: 100%;
+    margin-top: 15px;
+}
+
+/* Main Buttons */
+.container button {
+    margin-top: 10px;
+    padding: 12px 18px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.container button:hover {
+    background-color: #218838;
+}
