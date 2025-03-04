@@ -50,3 +50,19 @@ if (window.location.pathname.includes("fitness-meme.html")) {
             ctx.strokeText(bottomText, canvas.width / 2, canvas.height - canvas.height / 10);
             // centered horizontally, 1/10 from bottom edge of the canvas
         }
+
+              // Show download button
+              document.getElementById("downloadBtn").style.display = "block";
+            };
+            // After the meme is generated the "Download" button is made visible by setting its display style to block.
+        }
+        
+        // Download the generated meme
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+            let canvas = document.getElementById("memeCanvas");
+            let link = document.createElement("a");
+            link.download = "meme.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    
