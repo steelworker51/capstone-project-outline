@@ -39,3 +39,16 @@ function saveToLocalStorage(event) {
     } else {
         console.warn("LocalStorage is not available");
     }
+
+     // Save to Firebase Database
+        push(referenceInDB, {
+            fullname: fullname,
+            address: address,
+            email: email
+        }).then(() => {
+            alert('Signup details saved to Firebase and Local Storage!');
+        }).catch(error => {
+            console.error("Error saving data:", error);
+            alert('Error saving data!');
+        });
+    }
