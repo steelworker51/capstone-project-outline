@@ -15,3 +15,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const referenceInDB = ref(database, "users"); // Firebase reference
+
+// Save to Local Storage and Firebase
+function saveToLocalStorage(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Access input fields
+    const fullname = document.querySelector('input[name="fullname"]').value.trim();
+    const address = document.querySelector('input[name="address"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value.trim(); // Not stored
+
+    if (!fullname || !address || !email) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Save to Local Storage
+    if (typeof localStorage !== "undefined") {
+        localStorage.setItem('fullname', fullname);
+        localStorage.setItem('address', address);
+        localStorage.setItem('email', email);
+    } else {
+        console.warn("LocalStorage is not available");
+    }
