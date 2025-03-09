@@ -52,3 +52,13 @@ function saveToLocalStorage(event) {
             alert('Error saving data!');
         });
     }
+
+    // Attach event listener to form
+document.addEventListener("DOMContentLoaded", () => {
+    const signupForm = document.querySelector('form');
+    if (signupForm) {
+        signupForm.addEventListener("submit", saveToLocalStorage);
+    } else {
+        console.error("Signup form not found!");
+    }
+});
