@@ -15,3 +15,16 @@ async function getRandomQuote() {
         return "Believe in yourself! - Unknown"; // Fallback quote
     }
 }
+
+// Fetch a random motivational image from Unsplash
+async function getMotivationalImage() {
+    try {
+        const response = await fetch(`https://api.unsplash.com/photos/random?query=motivation&client_id=${UNSPLASH_ACCESS_KEY}`);
+        if (!response.ok) throw new Error("Failed to fetch image");
+        const data = await response.json();
+        return data.urls.regular; // Returns the image URL
+    } catch (error) {
+        console.error("Error fetching image:", error);
+        return "/public/images/fallback.jpg"; // dont forget to put a image here in case of error
+    }
+}
