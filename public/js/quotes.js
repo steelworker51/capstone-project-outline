@@ -28,3 +28,33 @@ async function getMotivationalImage() {
         return "/public/images/fallback.jpg"; // dont forget to put a image here in case of error
     }
 }
+
+// Update the page with a new quote and image
+async function updateContent() {
+    const quoteElement = document.getElementById("quoteText");
+    const imageElement = document.getElementById("motivationalImage");
+
+    if (quoteElement) {
+        quoteElement.textContent = "Loading quote...";
+        quoteElement.textContent = await getRandomQuote();
+    }
+
+    if (imageElement) {
+        imageElement.src = "/public/images/loading.gif"; // placeholder
+        imageElement.src = await getMotivationalImage();
+    }
+}
+
+// Add event listener to update content on click
+const box = document.getElementById("box");
+if (box) {
+    box.addEventListener("click", function () {
+        console.log("Box clicked! Updating quote and image.");
+        updateContent();
+    });
+} else {
+    console.log("Box element not found!");
+}
+
+updateContent(); // Load content when the page loads
+}
