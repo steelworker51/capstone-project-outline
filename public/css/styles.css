@@ -4,7 +4,12 @@ body {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
+    
 }
+
+/* .my-cursor {
+    cursor: url('images/cursor.png'), auto; /
+} */
 
 /* Navigation Bar */
 .nav {
@@ -155,6 +160,8 @@ h4 {
     width: 100%;
 }
 
+/* page is dynamic and adjust to different sized screens was designed mobile first */
+
 /* Meme Generator Container */
 .container {
     background: white;
@@ -199,4 +206,134 @@ canvas {
 
 .container button:hover {
     background-color: #218838;
+}
+
+/* Signup Container */
+#container {
+    display: flex;               /* Centering with Flexbox */
+    justify-content: center;      /* Center horizontally */
+    align-items: center;         /* Center vertically */
+    height: 100vh;               /* Full viewport height */
+    width: 100%;                 /* Full viewport width */
+}
+
+.signup-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background-color: #218838;
+}
+
+/* Quote Container */
+#container {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Quote Box */
+
+#box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+#quote-container, #image-container {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+}
+
+#image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .activities {
+        flex-direction: column;
+    }
+
+    .activities div {
+        width: 80%;
+    }
+
+    .nav {
+        flex-wrap: nowrap;
+    }
+
+    .nav button {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    #box {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 24px;
+    }
+    
+    .hero h2 {
+        font-size: 20px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .activities div {
+        width: 90%;
+    }
+
+    #box {
+        max-width: 95%;
+        padding: 10px;
+    }
 }
