@@ -4,7 +4,7 @@ if (window.location.pathname.includes("motivate.html")) {
     console.log("This is the Motivational Quotes page!");
 }
 
-const UNSPLASH_ACCESS_KEY = "VhO9hNztq1OBRy26WqRy3HJ1XkiL8AjkXBd1D7xPxSk"; 
+const UNSPLASH_ACCESS_KEY = "key ommited to push to git hub, working on the .env file to hide"; 
 // Fetch a random motivational quote
 async function getRandomQuote() {
     try {
@@ -27,7 +27,7 @@ async function getMotivationalImage() {
         return data.urls.regular; // Returns the image URL
     } catch (error) {
         console.error("Error fetching image:", error);
-        return "/public/images/fallback.jpg"; // dont forget to put a image here in case of error
+        return "/public/images/fallback.jpg"; // dont forget to put a image here in case of error (completed)
     }
 }
 

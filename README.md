@@ -1,6 +1,12 @@
 # capstone-project-outline
 repo for my capstone project in Code: You Kentucky:Code
-
+Features that are being met:
+Validate user input and either prevent the invalid input or inform the user about it 
+Create a function that accepts two or more input parameters and returns a value
+Retrieve data from a third-party API and use it to display something within your app.
+Create a node.js web server using a modern framework such as Express.js
+Interact with a database to store and retrieve information (note the store in a database was completed it was uploaded to the firebase database as well as local storage, the retrieve information and utilize information is a stretch goal that I will complete as I can.   I would to retrieve the data from firebase and then be able to display it on the page.   So I will continue to work on this functionality.)
+	
 In this capstone project I'm doing 4 pages.
 
 Page 1, will contain an index.html page that has a navigation bar at the top, which will allow you to come back to the home 

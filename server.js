@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;  // ✅ This ensures PORT is properly defined
 
-// Serve static files from the "public" folder
+// static files from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Define the home route
