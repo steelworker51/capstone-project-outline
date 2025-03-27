@@ -15,7 +15,7 @@ if (window.location.pathname.includes("fitness-meme.html")) {
             alert("Please upload an image first!");
             return;
         }
-        // checks to see if an image was uploaded function return to prevent further execution
+        // checks to see if an image was uploaded function return to prevent further execution, the canvas was done with help of a scrimba project, google, and some chatgpt
 
         let img = new Image();
         img.src = URL.createObjectURL(fileInput.files[0]);
@@ -31,7 +31,7 @@ if (window.location.pathname.includes("fitness-meme.html")) {
     
             // Define text styles
             ctx.font = `${canvas.width / 10}px Impact`;
-            // font is 1/10 of canbas width and in Impact font
+            // font is 1/10 of canvas width and in Impact font
             ctx.fillStyle = "white";
             //text color 
             ctx.strokeStyle = "black";
@@ -57,7 +57,7 @@ if (window.location.pathname.includes("fitness-meme.html")) {
             // After the meme is generated the "Download" button is made visible by setting its display style to block.
         }
         
-        // Download the generated meme
+        // Download the generated meme also done with the help of a scrimba project
         document.getElementById("downloadBtn").addEventListener("click", function () {
             let canvas = document.getElementById("memeCanvas");
             let link = document.createElement("a");

@@ -1,11 +1,22 @@
 # capstone-project-outline
+
+the api key for unsplash will not be commit so you wil have to create an .env file with the unsplash key.
+the api key for fireside will remain public and the ability to read and write has been taken away with security rules.   I will toggle these back on when a user is need to test
+the functionality of my application.  I know there are other ways to get around this much the same way as i hid the unsplash api key but I will work on that later as a strech goal.
+
+/*for servering the project in express 
+note in terminal: 
+npm install dotenv (then)
+npm install node-fetch (then)
+node server.js*/
+
 repo for my capstone project in Code: You Kentucky:Code
 Features that are being met:
-Validate user input and either prevent the invalid input or inform the user about it 
-Create a function that accepts two or more input parameters and returns a value
-Retrieve data from a third-party API and use it to display something within your app.
-Create a node.js web server using a modern framework such as Express.js
-Interact with a database to store and retrieve information (note the store in a database was completed it was uploaded to the firebase database as well as local storage, the retrieve information and utilize information is a stretch goal that I will complete as I can.   I would to retrieve the data from firebase and then be able to display it on the page.   So I will continue to work on this functionality.)
+1. Validate user input and either prevent the invalid input or inform the user about it: in my signup form if your not filling out the forms or you put an entry that is not an email address it will reject the entry.   In my meme generator form if you do not click to add an image or you do not fill out the form it will alert you to do so.
+2. Create a function that accepts two or more input parameters and returns a value:  In my meme generator it takes an image of your choosing, a top text you input and a bottom text you input.   I draws the image on the canvas and populate the text at the top and the bottom.   I then creates a link that you can download the finished project and save it as a png file.   
+3. Retrieve data from a third-party API and use it to display something within your app:  My quote page pulls a motivational quote from advice slip api, it also pulls a motivation image from unsplash not directly but by the server side via our server.js, to populate in a box below the motivational quote.   
+4.  Create a node.js web server using a modern framework such as Express.js  the node.js server by way of express is set up by the function in our quotes.js to fetch the image.   The server.js interacts with the server in the unsplash.api and by way of the use of our dotenv and enviromental variables it effectively hides our api key.   
+5.  Interact with a database to store and retrieve information (note the store in a database was completed it was uploaded to the firebase database as well as local storage, the retrieve information and utilize information is a stretch goal that I will complete as I can.   I would to retrieve the data from firebase and then be able to display it on the page.   So I will continue to work on this functionality.)
 	
 In this capstone project I'm doing 4 pages.
 

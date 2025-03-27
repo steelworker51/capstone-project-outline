@@ -1,10 +1,8 @@
-
-
 if (window.location.pathname.includes("motivate.html")) {
     console.log("This is the Motivational Quotes page!");
 }
 
-const UNSPLASH_ACCESS_KEY = "key ommited to push to git hub, working on the .env file to hide"; 
+const UNSPLASH_ACCESS_KEY = "iTqM7dV4WFwkoa2dQCd8HzxV3g1jYC6Jb_1QLbEETXk"; 
 // Fetch a random motivational quote
 async function getRandomQuote() {
     try {
