@@ -1,4 +1,6 @@
-// server.js
+// index.js
+require('dotenv').config(); // Load environment variables from the .env file
+
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
