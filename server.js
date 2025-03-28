@@ -1,20 +1,22 @@
-// index.js
-require('dotenv').config(); // Load environment variables from the .env file
-
+// server.js
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config(); // Load environment variables from .env file
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 
 // Enable CORS to prevent cross-origin issues
 app.use(cors());
 
+
 // Serve static files from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Fetch a random motivational quote
 async function getRandomQuote() {
@@ -29,6 +31,7 @@ async function getRandomQuote() {
     }
 }
 
+
 // Fetch a random motivational image from Pexels
 async function getMotivationalImage() {
     try {
@@ -38,10 +41,13 @@ async function getMotivationalImage() {
             },
         });
 
+
         if (!response.ok) throw new Error("Failed to fetch image");
         const data = await response.json();
 
+
         if (data.photos.length === 0) throw new Error("No images found");
+
 
         return data.photos[0].src.large;  // Return a high-quality image URL
     } catch (error) {
@@ -49,6 +55,7 @@ async function getMotivationalImage() {
         return "/images/fallback.jpg";  // Local fallback image
     }
 }
+
 
 // API endpoint to get a quote and an image
 app.get('/api/motivation', async (req, res) => {
@@ -61,6 +68,7 @@ app.get('/api/motivation', async (req, res) => {
         res.status(500).json({ message: "Error fetching data" });
     }
 });
+
 
 // Start the server
 app.listen(PORT, () => {
