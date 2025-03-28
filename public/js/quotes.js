@@ -2,30 +2,20 @@ if (window.location.pathname.includes("motivate.html")) {
     console.log("This is the Motivational Quotes page!");
 }
 
-const UNSPLASH_ACCESS_KEY = "iTqM7dV4WFwkoa2dQCd8HzxV3g1jYC6Jb_1QLbEETXk"; 
-// Fetch a random motivational quote
-async function getRandomQuote() {
+// Fetch motivational quote and image from server
+async function getMotivationalContent() {
     try {
-        const response = await fetch("https://api.adviceslip.com/advice");
-        if (!response.ok) throw new Error("Failed to fetch quote");
+        const response = await fetch("/api/motivation");
+        if (!response.ok) throw new Error("Failed to fetch data");
         const data = await response.json();
-        return `"${data.slip.advice}" `;
-    } catch (error) {
-        console.error("Error fetching quote:", error);
-        return "Believe in yourself! - Unknown"; // Fallback quote
-    }
-}
+        
+        // Log the response to check its structure
+        console.log("API Response:", data);
 
-// Fetch a random motivational image from Unsplash
-async function getMotivationalImage() {
-    try {
-        const response = await fetch(`https://api.unsplash.com/photos/random?query=motivation&client_id=${UNSPLASH_ACCESS_KEY}`);
-        if (!response.ok) throw new Error("Failed to fetch image");
-        const data = await response.json();
-        return data.urls.regular; // Returns the image URL
+        return data;
     } catch (error) {
-        console.error("Error fetching image:", error);
-        return "/public/images/fallback.jpg"; // dont forget to put a image here in case of error (completed)
+        console.error("Error fetching content:", error);
+        return { quote: "Believe in yourself! - Unknown", image: "/images/fallback.jpg" }; // Fallback data
     }
 }
 
@@ -34,14 +24,11 @@ async function updateContent() {
     const quoteElement = document.getElementById("quoteText");
     const imageElement = document.getElementById("motivationalImage");
 
-    if (quoteElement) {
+    if (quoteElement && imageElement) {
         quoteElement.textContent = "Loading quote...";
-        quoteElement.textContent = await getRandomQuote();
-    }
-
-    if (imageElement) {
-        imageElement.src = ""; // placeholder
-        imageElement.src = await getMotivationalImage();
+        const data = await getMotivationalContent();
+        quoteElement.textContent = data.quote;
+        imageElement.src = data.image; // Should be a valid path like '/images/inspirational-image.jpg'
     }
 }
 

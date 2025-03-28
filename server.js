@@ -1,30 +1,66 @@
-// index.js
-require('dotenv').config(); // Load environment variables from the .env file
-
+// server.js
 const express = require('express');
-const axios = require('axios');
+const fetch = require('node-fetch');
+const path = require('path');
+const cors = require('cors');
+require('dotenv').config(); // Load environment variables from .env file
+
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Access the Unsplash API key from the environment variables
-const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
+// Enable CORS to prevent cross-origin issues
+app.use(cors());
 
-// Serve static files (e.g., HTML, CSS, JS) from the public directory
-app.use(express.static('public'));
+// Serve static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Proxy route to fetch a random motivational image
-app.get('/api/motivational-image', async (req, res) => {
+// Fetch a random motivational quote
+async function getRandomQuote() {
     try {
-        const response = await axios.get(`https://api.unsplash.com/photos/random?query=motivation&client_id=${UNSPLASH_ACCESS_KEY}`);
-        const imageUrl = response.data[0].urls.regular; // Return the regular size image URL
-        res.json({ imageUrl });
+        const response = await fetch("https://api.adviceslip.com/advice");
+        if (!response.ok) throw new Error("Failed to fetch quote");
+        const data = await response.json();
+        return `"${data.slip.advice}"`;
+    } catch (error) {
+        console.error("Error fetching quote:", error);
+        return "Believe in yourself! - Unknown"; // Fallback quote
+    }
+}
+
+// Fetch a random motivational image from Pexels
+async function getMotivationalImage() {
+    try {
+        const response = await fetch("https://api.pexels.com/v1/search?query=motivation&per_page=1", {
+            headers: {
+                Authorization: process.env.PEXELS_API_KEY,  // Load API key from .env
+            },
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch image");
+        const data = await response.json();
+
+        if (data.photos.length === 0) throw new Error("No images found");
+
+        return data.photos[0].src.large;  // Return a high-quality image URL
     } catch (error) {
         console.error("Error fetching image:", error);
-        res.status(500).json({ error: "Failed to fetch image" });
+        return "/images/fallback.jpg";  // Local fallback image
+    }
+}
+
+// API endpoint to get a quote and an image
+app.get('/api/motivation', async (req, res) => {
+    try {
+        const quote = await getRandomQuote();
+        const image = await getMotivationalImage();
+        console.log("Returning image URL:", image);  // Log the image URL
+        res.json({ quote, image });
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching data" });
     }
 });
 
-// Start the Express server
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
